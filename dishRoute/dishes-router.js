@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
-const Users = require('./dishes-model.js');
+const db = require('./dishes-model.js');
 
-router.get('/', (req, res) => {
-    Users.find()
-    .then( users => {
-        res.status(200).json(users)
+router.get('/dishes', (req, res) => {
+    db.getDishes()
+    .then( dish => {
+        res.status(200).json(dish)
     })
     .catch(err => {
         res.status(500).json(err)

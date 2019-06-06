@@ -5,26 +5,37 @@ const knexConfig = require('../knexfile.js');
 const db = knex(knexConfig.development);
 
 module.exports = {
-    find, 
-    insert,
-    findById,
+    getDishes, 
+    addDish,
+    getDish,
     update,
-    remove
+    remove,
+    getRecipes,
+    addRecipe
 };
 
-function find() {
+function getDishes() {
     return db('dishes');
 };
 
-function findById(id){
+function getDish(id){
     return db('dishes')
     .where({ id })
     .first();
 };
 
-function insert(dish) {
+function addDish(dish) {
     return db('dishes')
     .insert(dish);
+};
+
+function getRecipes() {
+    return db('recipes');
+};
+
+function addRecipe(recipe) {
+    return db('recipe')
+    .insert(recipe);
 };
 
 function update(id, changes) {

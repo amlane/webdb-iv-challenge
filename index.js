@@ -7,7 +7,7 @@ const server = express();
 
 server.use(express.json());
 server.use(helmet());
-server.use('/api/dishes', dishesRouter)
+server.use('/api', dishesRouter)
 
 server.get('/', (req, res) => {
     res.send('Hello')
