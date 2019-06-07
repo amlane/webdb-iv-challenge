@@ -50,6 +50,16 @@ router.get('/recipes', (req, res) => {
     })
 });
 
+router.post('/recipes', (req, res) => {
+    db.addRecipe(req.body)
+    .then(recipe => {
+        res.status(201).json(recipe)
+    })
+    .catch(err => {
+        res.status(500).json(err)
+    })
+});
+
 // router.get('/:id', verifyId, (req, res) => {
 //     const id = req.params.id;
 

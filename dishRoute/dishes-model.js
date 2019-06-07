@@ -21,10 +21,8 @@ function getDishes() {
 function getDish(id){
     return db('recipes')
     .join('dishes', 'dishes.id', 'recipes.dish_id')
-    .select('recipes.id', 'recipes.name as Recipe Name', 'dishes.name as Dish Name')
+    .select('recipes.id', 'recipes.name as Recipe Names', 'dishes.name as Dish Name')
     .where('recipes.dish_id', id)
-    // .where({ id })
-    // .first();
 };
 
 function addDish(dish) {
@@ -37,7 +35,7 @@ function getRecipes() {
 };
 
 function addRecipe(recipe) {
-    return db('recipe')
+    return db('recipes')
     .insert(recipe);
 };
 
