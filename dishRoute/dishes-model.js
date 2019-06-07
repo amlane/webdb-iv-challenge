@@ -19,9 +19,12 @@ function getDishes() {
 };
 
 function getDish(id){
-    return db('dishes')
-    .where({ id })
-    .first();
+    return db('recipes')
+    .join('dishes', 'dishes.id', 'recipes.dish_id')
+    .select('recipes.id', 'recipes.name as Recipe Name', 'dishes.name as Dish Name')
+    .where('recipes.dish_id', id)
+    // .where({ id })
+    // .first();
 };
 
 function addDish(dish) {
